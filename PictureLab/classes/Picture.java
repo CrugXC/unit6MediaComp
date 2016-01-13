@@ -332,34 +332,34 @@ public class Picture extends SimplePicture
   {
     Pixel[][] pixels = this.getPixels2D();
       
-    Pixel[][] newPixels = new Pixel[(int)(pixels.length/2)][(int)(pixels[0].length/2)];
+    Picture newPic = new Picture((pixels.length/2), (pixels[0].length/2));
+    Pixel[][] newPixels = newPic.getPixels2D();
     
-    int rowCount;
-    int colCount;
+
     
-    for (int row = 0, rowCount = 0; row < pixels.length; row += 4, rowCount ++)
+    for (int row = 0; row < newPixels.length; row++)
     {
-      for (int col = 0, colCount = 0; col < pixels[0].length; col += 4, colCount ++)
+      for (int col = 0; col < newPixels[0].length; col++)
       {
-          newPixels[rowCount][colCount] = new Pixel(new Color(
-                                                                ((pixels[row][col].getRed()
-                                                                 + pixels[row + 1][col].getRed()
-                                                                 + pixels[row][col + 1].getRed()
-                                                                 + pixels[row + 1][col + 1].getRed()) /4), 
+          newPixels[row][col].setColor(new Color(
+                                                                ((pixels[row*2][col*2].getRed()
+                                                                 + pixels[row*2 + 1][col*2].getRed()
+                                                                 + pixels[row*2][col*2 + 1].getRed()
+                                                                 + pixels[row*2 + 1][col*2 + 1].getRed()) /4), 
                                                                  
-                                                                 ((pixels[row][col].getGreen()
-                                                                 + pixels[row + 1][col].getGreen()
-                                                                 + pixels[row][col + 1].getGreen()
-                                                                 + pixels[row + 1][col + 1].getGreen()) /4), 
+                                                                 ((pixels[row*2][col*2].getGreen()
+                                                                 + pixels[row*2 + 1][col*2].getGreen()
+                                                                 + pixels[row*2][col*2 + 1].getGreen()
+                                                                 + pixels[row*2 + 1][col*2 + 1].getGreen()) /4), 
                                                                  
-                                                                 ((pixels[row][col].getBlue()
-                                                                 + pixels[row + 1][col].getBlue()
-                                                                 + pixels[row][col + 1].getBlue()
-                                                                 + pixels[row + 1][col + 1].getBlue()) /4)));
+                                                                 ((pixels[row*2][col*2].getBlue()
+                                                                 + pixels[row*2 + 1][col*2].getBlue()
+                                                                 + pixels[row*2][col*2 + 1].getBlue()
+                                                                 + pixels[row*2 + 1][col*2 + 1].getBlue()) /4)));
       }
     }
     
-    
+    return newPic;
   }
   
   /** copy from the passed fromPic to the

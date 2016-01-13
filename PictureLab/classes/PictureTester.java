@@ -125,6 +125,15 @@ public class PictureTester
     seagull.explore();
   }
   
+  /** Method to test scaleByHalf */
+  public static void testScaleByHalf()
+  {
+    Picture moon = new Picture("moon-surface.jpg");
+    moon.explore();
+    Picture newPic = moon.scaleByHalf();
+    newPic.explore();
+  }
+  
   /** Method to test the collage method */
   public static void testCollage()
   {
