@@ -337,9 +337,9 @@ public class Picture extends SimplePicture
     int rowCount;
     int colCount;
     
-    for (int row = 0 && rowCount = 0; row < pixels.length; row += 4 && rowCount ++)
+    for (int row = 0, rowCount = 0; row < pixels.length; row += 4, rowCount ++)
     {
-      for (int col = 0 && colCount = 0; col < pixels[0].length; col += 4 && colCount ++)
+      for (int col = 0, colCount = 0; col < pixels[0].length; col += 4, colCount ++)
       {
           newPixels[rowCount][colCount] = new Pixel(new Color(
                                                                 ((pixels[row][col].getRed()
