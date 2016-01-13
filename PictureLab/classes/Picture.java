@@ -98,6 +98,65 @@ public class Picture extends SimplePicture
     }
   }
   
+  /** Method to set the red and green to 0 */
+  public void onlyBlue()
+  {
+    Pixel[][] pixels = this.getPixels2D();
+    for (Pixel[] rowArray : pixels)
+    {
+      for (Pixel pixelObj : rowArray)
+      {
+        pixelObj.setGreen(0);
+        pixelObj.setRed(0);
+      }
+    }
+  }
+  
+  public void negate()
+  {
+    Pixel[][] pixels = this.getPixels2D();
+    for (Pixel[] rowArray : pixels)
+    {
+      for (Pixel pixelObj : rowArray)
+      {
+        pixelObj.setGreen(255 - pixelObj.getGreen());
+        pixelObj.setRed(255 - pixelObj.getRed());
+        pixelObj.setBlue(255 - pixelObj.getBlue());
+      }
+    }
+  }
+  
+  public void grayscale()
+  {
+    Pixel[][] pixels = this.getPixels2D();
+    int avColor;
+    
+    for (Pixel[] rowArray : pixels)
+    {
+      for (Pixel pixelObj : rowArray)
+      {
+        avColor = (pixelObj.getGreen() + pixelObj.getRed() + pixelObj.getBlue()) / 3;
+        pixelObj.setGreen(avColor);
+        pixelObj.setRed(avColor);
+        pixelObj.setBlue(avColor);
+      }
+    }
+  }
+  
+  public void fixUnderwater()
+  {
+    Pixel[][] pixels = this.getPixels2D();
+    int avColor;
+    
+    for (Pixel[] rowArray : pixels)
+    {
+      for (Pixel pixelObj : rowArray)
+      {
+        pixelObj.setRed(pixelObj.getRed() * 5);
+      }
+    }
+  }
+  
   /** Method that mirrors the picture around a 
     * vertical mirror in the center of the picture
     * from left to right */
@@ -155,6 +214,33 @@ public class Picture extends SimplePicture
     } 
   }
   
+  public void mirrorDiagonal()
+  {
+    Pixel[][] pixels = this.getPixels2D();
+    Pixel topPixel = null;
+    Pixel bottomPixel = null;
+    int height;
+    
+    if(pixels.length < pixels[0].length)
+    {
+        height = pixels.length;
+    }
+    else
+    {
+        height = pixels[0].length;
+    }
+    
+    for (int row = 0; row < pixels.length; row++)
+    {
+      for (int col = 0; col < row; col++)
+      {
+        topPixel = pixels[row][col];
+        bottomPixel = pixels[height - row - 1][height - col - 1];
+        bottomPixel.setColor(topPixel.getColor());
+      }
+    } 
+  }
+  
   /** Mirror just part of a picture of a temple */
   public void mirrorTemple()
   {
@@ -177,6 +263,103 @@ public class Picture extends SimplePicture
         rightPixel.setColor(leftPixel.getColor());
       }
     }
+  }
+  
+  public void mirrorSnowman()
+  {
+    int mirrorPoint = 194;
+    Pixel leftPixel = null;
+    Pixel rightPixel = null;
+    Pixel[][] pixels = this.getPixels2D();
+    
+    // loop through the rows
+    for (int row = 159; row < 191; row++)
+    {
+      // loop through the columns
+      for (int col = 106; col < 294; col++)
+      {
+        
+        leftPixel = pixels[row][col];      
+        rightPixel = pixels[mirrorPoint - row + mirrorPoint][col];
+        rightPixel.setColor(leftPixel.getColor());
+      }
+    }
+  }
+  
+  public void mirrorSeagull()
+  {
+    int mirrorPoint = 350;
+    Pixel leftPixel = null;
+    Pixel rightPixel = null;
+    Pixel[][] pixels = this.getPixels2D();
+    
+    // loop through the rows
+    for (int row = 234; row < 322; row++)
+    {
+      // loop through the columns
+      for (int col = 237; col < 344; col++)
+      {
+        
+        leftPixel = pixels[row][col];      
+        rightPixel = pixels[row][mirrorPoint - col + mirrorPoint];
+        rightPixel.setColor(leftPixel.getColor());
+      }
+    }
+  }
+  
+  public void cropAndCopy( Picture sourcePicture, int startSourceRow, 
+         int endSourceRow, int startSourceCol, int endSourceCol,
+         int startDestRow, int startDestCol )
+  {
+    Pixel originalPixel = null;
+    Pixel replacementPixel = null;
+    Pixel[][] pixels = this.getPixels2D();
+    
+     // loop through the rows
+    for (int row = startSourceRow; row < endSourceRow; row++)
+    {
+      // loop through the columns
+      for (int col = startSourceCol; col < endSourceCol; col++)
+      {
+          originalPixel = pixels[row][col];
+          replacementPixel = pixels[startDestRow + row][startDestCol + col];
+          replacementPixel.setColor(originalPixel.getColor());
+      }
+    }
+  }
+
+  public Picture scaleByHalf()
+  {
+    Pixel[][] pixels = this.getPixels2D();
+      
+    Pixel[][] newPixels = new Pixel[(int)(pixels.length/2)][(int)(pixels[0].length/2)];
+    
+    int rowCount;
+    int colCount;
+    
+    for (int row = 0 && rowCount = 0; row < pixels.length; row += 4 && rowCount ++)
+    {
+      for (int col = 0 && colCount = 0; col < pixels[0].length; col += 4 && colCount ++)
+      {
+          newPixels[rowCount][colCount] = new Pixel(new Color(
+                                                                ((pixels[row][col].getRed()
+                                                                 + pixels[row + 1][col].getRed()
+                                                                 + pixels[row][col + 1].getRed()
+                                                                 + pixels[row + 1][col + 1].getRed()) /4), 
+                                                                 
+                                                                 ((pixels[row][col].getGreen()
+                                                                 + pixels[row + 1][col].getGreen()
+                                                                 + pixels[row][col + 1].getGreen()
+                                                                 + pixels[row + 1][col + 1].getGreen()) /4), 
+                                                                 
+                                                                 ((pixels[row][col].getBlue()
+                                                                 + pixels[row + 1][col].getBlue()
+                                                                 + pixels[row][col + 1].getBlue()
+                                                                 + pixels[row + 1][col + 1].getBlue()) /4)));
+      }
+    }
+    
+    
   }
   
   /** copy from the passed fromPic to the

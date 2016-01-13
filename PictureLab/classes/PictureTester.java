@@ -17,6 +17,41 @@ public class PictureTester
     beach.explore();
   }
   
+  /** Method to test onlyBlue */
+  public static void testOnlyBlue()
+  {
+    Picture beach = new Picture("beach.jpg");
+    beach.explore();
+    beach.onlyBlue();
+    beach.explore();
+  }
+  
+  /** Method to test negate */
+  public static void testNegate()
+  {
+    Picture beach = new Picture("beach.jpg");
+    beach.explore();
+    beach.negate();
+    beach.explore();
+  }
+  
+  /** Method to test grayscale */
+  public static void testGrayscale()
+  {
+    Picture beach = new Picture("beach.jpg");
+    beach.explore();
+    beach.grayscale();
+    beach.explore();
+  }
+  
+  /** Method to test grayscale */
+  public static void testFixUnderwater()
+  {
+    Picture beach = new Picture("water.jpg");
+    beach.explore();
+    beach.fixUnderwater();
+    beach.explore();
+  }
   
   /** Method to test mirrorVertical */
   public static void testMirrorVertical()
@@ -45,6 +80,15 @@ public class PictureTester
     caterpillar.explore();
   }
   
+  /** Method to test mirrorDiagonal */
+  public static void testMirrorDiagonal()
+  {
+    Picture caterpillar = new Picture("caterpillar.jpg");
+    caterpillar.explore();
+    caterpillar.mirrorDiagonal();
+    caterpillar.explore();
+  }
+  
   /** Method to test mirrorTemple */
   public static void testMirrorTemple()
   {
@@ -52,6 +96,33 @@ public class PictureTester
     temple.explore();
     temple.mirrorTemple();
     temple.explore();
+  }
+  
+  /** Method to test mirrorSnowman */
+  public static void testMirrorSnowman()
+  {
+    Picture snowman = new Picture("snowman.jpg");
+    snowman.explore();
+    snowman.mirrorSnowman();
+    snowman.explore();
+  }
+  
+  /** Method to test mirrorSeagull */
+  public static void testMirrorSeagull()
+  {
+    Picture seagull = new Picture("seagull.jpg");
+    seagull.explore();
+    seagull.mirrorSeagull();
+    seagull.explore();
+  }
+  
+  /** Method to test cropAndCopy */
+  public static void testCropAndCopy()
+  {
+    Picture seagull = new Picture("seagull.jpg");
+    seagull.explore();
+    seagull.cropAndCopy(seagull, 20, 60, 40, 80, 200, 200);
+    seagull.explore();
   }
   
   /** Method to test the collage method */
@@ -77,7 +148,7 @@ public class PictureTester
     // uncomment a call here to run a test
     // and comment out the ones you don't want
     // to run
-    testZeroBlue();
+    //testZeroBlue();
     //testKeepOnlyBlue();
     //testKeepOnlyRed();
     //testKeepOnlyGreen();
