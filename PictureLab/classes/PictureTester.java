@@ -134,6 +134,15 @@ public class PictureTester
     newPic.explore();
   }
   
+  /** Method to test scale */
+  public static void testScale()
+  {
+    Picture moon = new Picture("moon-surface.jpg");
+    moon.explore();
+    Picture newPic = moon.scale(3);
+    newPic.explore();
+  }
+  
   /** Method to test the collage method */
   public static void testCollage()
   {

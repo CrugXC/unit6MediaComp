@@ -362,6 +362,34 @@ public class Picture extends SimplePicture
     return newPic;
   }
   
+  public Picture scale(int scaleFactor)
+  {
+    Pixel[][] pixels = this.getPixels2D();
+      
+    Picture newPic = new Picture((pixels.length*scaleFactor), (pixels[0].length*scaleFactor));
+    Pixel[][] newPixels = newPic.getPixels2D();
+    
+    for(int row = 0; row < pixels.length; row++)
+    {
+        for(int col = 0; col < pixels[row].length; col++)
+        {
+            for(int i = 0; i < scaleFactor; i++)
+            {
+                for(int j = 0; j < scaleFactor; j++)
+                {
+                    newPixels[row*scaleFactor+i][col*scaleFactor+j].setColor(pixels[row][col].getColor());
+                }
+            }
+        }
+    }
+    
+    return newPic;
+  }
+  
+  public Picture rotate(int theta)
+  {
+  }
+  
   /** copy from the passed fromPic to the
     * specified startRow and startCol in the
     * current picture
