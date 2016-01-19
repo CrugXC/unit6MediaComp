@@ -143,6 +143,14 @@ public class PictureTester
     newPic.explore();
   }
   
+  /** Method to test rainbow */
+  public static void testRainbow()
+  {
+    Picture newPic = new Picture(1680, 1050);
+    newPic.rainbow();
+    newPic.explore();
+  }
+  
   /** Method to test the collage method */
   public static void testCollage()
   {

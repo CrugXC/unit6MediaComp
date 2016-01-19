@@ -386,8 +386,65 @@ public class Picture extends SimplePicture
     return newPic;
   }
   
-  public Picture rotate(int theta)
+  public void rainbow()
   {
+    int r;
+    int g;
+    int b;
+    
+    Pixel[][] pixels = this.getPixels2D();
+
+    double length = pixels[0].length / 6;
+    
+      for(int row = 0; row < pixels.length; row++)
+    {
+        for(int col = 0; col < pixels[row].length; col++)
+        {
+           if (col < length)
+           {
+               r = 255;
+               g = (int)((col % length) / length * 255); 
+               b = 0;
+           }
+           
+           else if (col < length * 2)
+           {
+               g = 255;
+               r = 255 - (int)((col % length) / length * 255);
+               b = 0;
+           }
+           
+           else if (col < length * 3)
+           {
+               g = 255;
+               b = (int)((col % length) / length * 255);
+               r = 0;
+           }
+           
+           else if (col < length * 4)
+           {
+               b = 255;
+               g = 255 - (int)((col % length) / length * 255);
+               r = 0;
+           }
+           
+           else if (col < length * 5)
+           {
+               b = 255;
+               r = (int)((col % length) / length * 255);
+               g = 0;
+           }
+
+           else
+           {
+               r = 255;
+               b = 255 - (int)((col % length) / length * 255);
+               g = 0;
+           }
+           
+           pixels[row][col].setColor(new Color(r, g, b));
+        }
+    }
   }
   
   /** copy from the passed fromPic to the
