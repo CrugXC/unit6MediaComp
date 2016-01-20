@@ -12,6 +12,7 @@ import java.util.List; // resolves problem with java.awt.List and java.util.List
  * the Picture class.  
  * 
  * @author Barbara Ericson ericson@cc.gatech.edu
+ * @cooler author Jay Rixie
  */
 public class Picture extends SimplePicture 
 {
@@ -388,11 +389,11 @@ public class Picture extends SimplePicture
   
   public void rainbow()
   {
+    Pixel[][] pixels = this.getPixels2D();
     int r;
     int g;
     int b;
     
-    Pixel[][] pixels = this.getPixels2D();
 
     double length = pixels[0].length / 6;
     
@@ -442,8 +443,158 @@ public class Picture extends SimplePicture
                g = 0;
            }
            
-           pixels[row][col].setColor(new Color(r, g, b));
+           pixels[row][col].setColor(new Color(((pixels[row][col].getRed() + r)/2),((pixels[row][col].getGreen() + g))/2,((pixels[row][col].getBlue() + b))/2));
         }
+    }
+  }
+  
+  public void testQuestionMark()
+  {
+    Pixel[][] pixels = this.getPixels2D();
+    for (Pixel[] rowArray : pixels)
+    {
+      for (Pixel pixelObj : rowArray)
+      {
+        pixelObj.setGreen(pixelObj.getGreen()<128?0:255);
+        pixelObj.setRed(pixelObj.getRed()<128?0:255);
+        pixelObj.setBlue(pixelObj.getBlue()<128?0:255);
+      }
+    }
+  }
+  
+  public void testQuestionMark2()
+  {
+    Pixel[][] pixels = this.getPixels2D();
+    int countR = 0;
+    int countG = 0;
+    int countB = 0;
+    
+    for (Pixel[] rowArray : pixels)
+    {
+      for (Pixel pixelObj : rowArray)
+      {
+          countR += pixelObj.getRed();
+          countG += pixelObj.getGreen();
+          countB += pixelObj.getBlue();
+      }
+      
+      for (Pixel pixelObj : rowArray)
+      {
+          pixelObj.setColor(new Color(countR/pixels[0].length, countG/pixels[0].length, countB/pixels[0].length));
+      }
+      
+      countR = 0;
+      countG = 0;
+      countB = 0;
+    }
+    
+    
+  }
+  
+  public void posterize()
+  {
+    Pixel[][] pixels = this.getPixels2D();
+    int r;
+    int g;
+    int b;
+    
+    for (Pixel[] rowArray : pixels)
+    {
+      for (Pixel pixelObj : rowArray)
+      {
+        r = pixelObj.getRed();
+        g = pixelObj.getGreen();
+        b = pixelObj.getBlue();
+        if(r < 63)
+        {
+            r = 31;
+        }
+        
+        else if(r < 127)
+        {
+            r = 95;
+        }
+        
+        else if(r < 191)
+        {
+            r = 158;
+        }
+        
+        else
+        {
+            r = 222;
+        }
+        
+        if(g < 63)
+        {
+            g = 31;
+        }
+        
+        else if(g < 127)
+        {
+            g = 95;
+        }
+        
+        else if(g < 191)
+        {
+            g = 158;
+        }
+        
+        else
+        {
+            g = 222;
+        }
+        
+        if(b < 63)
+        {
+            b = 31;
+        }
+        
+        else if(b < 127)
+        {
+            b = 95;
+        }
+        
+        else if(b < 191)
+        {
+            b = 158;
+        }
+        
+        else
+        {
+            b = 222;
+        }
+        
+        pixelObj.setColor(new Color(r,g,b));
+      }
+    }
+  }
+  
+  public void pixelate()
+  {
+    Pixel[][] pixels = this.getPixels2D();
+
+    
+    for (int row = 0; row < pixels.length; row++)
+    {
+      for (int col = 0; col < pixels[0].length; col++)
+      {
+          pixels[row][col].setColor(new Color(
+                                                                ((pixels[row][col].getRed()
+                                                                 + pixels[row + 1][col].getRed()
+                                                                 + pixels[row][col + 1].getRed()
+                                                                 + pixels[row + 1][col + 1].getRed()) /4), 
+                                                                 
+                                                                 ((pixels[row][col*2].getGreen()
+                                                                 + pixels[row + 1][col].getGreen()
+                                                                 + pixels[row][col + 1].getGreen()
+                                                                 + pixels[row + 1][col + 1].getGreen()) /4), 
+                                                                 
+                                                                 ((pixels[row][col*2].getBlue()
+                                                                 + pixels[row + 1][col].getBlue()
+                                                                 + pixels[row][col + 1].getBlue()
+                                                                 + pixels[row + 1][col + 1].getBlue()) /4)));
+      }
     }
   }
   

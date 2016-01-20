@@ -146,8 +146,40 @@ public class PictureTester
   /** Method to test rainbow */
   public static void testRainbow()
   {
-    Picture newPic = new Picture(1680, 1050);
+    Picture newPic = new Picture("moon-surface.jpg");
     newPic.rainbow();
+    newPic.explore();
+  }
+  
+  /** Method to test testQuestionMark */
+  public static void testTestQuestionMark()
+  {
+    Picture newPic = new Picture("swan.jpg");
+    newPic.testQuestionMark();
+    newPic.explore();
+  }
+  
+  /** Method to test testQuestionMark2 */
+  public static void testTestQuestionMark2()
+  {
+    Picture newPic = new Picture("moon-surface.jpg");
+    newPic.testQuestionMark2();
+    newPic.explore();
+  }
+  
+  /** Method to test posterize */
+  public static void testPosterize()
+  {
+    Picture newPic = new Picture("temple.jpg");
+    newPic.posterize();
+    newPic.explore();
+  }
+  
+  /** Method to test pixelate */
+  public static void testPixelate()
+  {
+    Picture newPic = new Picture("swan.jpg");
+    newPic.pixelate();
     newPic.explore();
   }
   
