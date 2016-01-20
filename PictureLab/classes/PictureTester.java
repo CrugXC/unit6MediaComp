@@ -183,6 +183,15 @@ public class PictureTester
     newPic.explore();
   }
   
+  /** Method to test testQuestionMark3 */
+  public static void testTestQuestionMark3()
+  {
+    Picture newPic = new Picture("caterpillar.jpg");
+    newPic.explore();
+    newPic.testQuestionMark3();
+    newPic.explore();
+  }
+  
   /** Method to test the collage method */
   public static void testCollage()
   {

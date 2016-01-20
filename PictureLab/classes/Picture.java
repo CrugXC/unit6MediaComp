@@ -606,6 +606,20 @@ public class Picture extends SimplePicture
     }
   }
   
+  public void testQuestionMark3()
+  {
+    Pixel[][] pixels = this.getPixels2D();
+      
+
+    for (int row = 0; row < pixels.length; row++)
+    {
+      for (int col = 0; col < pixels[0].length; col++)
+      {
+          pixels[row][col].setColor(new Color(pixels[row][col].getBlue(), pixels[row][col].getRed(), pixels[row][col].getGreen()));
+      }
+    }
+  }
+  
   /** copy from the passed fromPic to the
     * specified startRow and startCol in the
     * current picture
