@@ -570,30 +570,38 @@ public class Picture extends SimplePicture
     }
   }
   
-  public void pixelate()
+  public void pixelate(int blurAmount)
   {
     Pixel[][] pixels = this.getPixels2D();
 
+    int r;
+    int g;
+    int b;
     
-    for (int row = 0; row < pixels.length; row++)
+    for (int row = 0; row < pixels.length / blurAmount; row++)
     {
-      for (int col = 0; col < pixels[0].length; col++)
+      for (int col = 0; col < pixels[0].length / blurAmount; col++)
       {
-          pixels[row][col].setColor(new Color(
-                                                                ((pixels[row][col].getRed()
-                                                                 + pixels[row + 1][col].getRed()
-                                                                 + pixels[row][col + 1].getRed()
-                                                                 + pixels[row + 1][col + 1].getRed()) /4), 
-                                                                 
-                                                                 ((pixels[row][col*2].getGreen()
-                                                                 + pixels[row + 1][col].getGreen()
-                                                                 + pixels[row][col + 1].getGreen()
-                                                                 + pixels[row + 1][col + 1].getGreen()) /4), 
-                                                                 
-                                                                 ((pixels[row][col*2].getBlue()
-                                                                 + pixels[row + 1][col].getBlue()
-                                                                 + pixels[row][col + 1].getBlue()
-                                                                 + pixels[row + 1][col + 1].getBlue()) /4)));
+          r = 0;
+          g = 0;
+          b = 0;
+          for (int i = 0; i < blurAmount; i++)
+          {
+              for (int j = 0; j < blurAmount; j++)
+              {
+                   r += pixels[row*blurAmount + i][col*blurAmount + i].getRed();
+                   g += pixels[row*blurAmount + i][col*blurAmount + i].getGreen();
+                   b += pixels[row*blurAmount + i][col*blurAmount + i].getBlue();
+              }
+          }
+          
+          for (int i = 0; i < blurAmount; i++)
+          {
+              for (int j = 0; j < blurAmount; j++)
+              {
+                  pixels[row*blurAmount + i][col*blurAmount + j].setColor(new Color(r/(blurAmount*blurAmount), g/(blurAmount*blurAmount), b/(blurAmount*blurAmount)));
+              }
+          }
       }
     }
   }

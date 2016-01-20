@@ -179,7 +179,7 @@ public class PictureTester
   public static void testPixelate()
   {
     Picture newPic = new Picture("swan.jpg");
-    newPic.pixelate();
+    newPic.pixelate(20);
     newPic.explore();
   }
   
