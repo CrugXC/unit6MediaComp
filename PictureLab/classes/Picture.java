@@ -87,7 +87,7 @@ public class Picture extends SimplePicture
   }
   
   /** Method to set the blue to 0 */
-  public void zeroBlue()
+  public Picture zeroBlue()
   {
     Pixel[][] pixels = this.getPixels2D();
     for (Pixel[] rowArray : pixels)
@@ -97,10 +97,42 @@ public class Picture extends SimplePicture
         pixelObj.setBlue(0);
       }
     }
+    
+    return this;
+  }
+  
+  /** Method to set the red to 0 */
+  public Picture zeroRed()
+  {
+    Pixel[][] pixels = this.getPixels2D();
+    for (Pixel[] rowArray : pixels)
+    {
+      for (Pixel pixelObj : rowArray)
+      {
+        pixelObj.setRed(0);
+      }
+    }
+    
+    return this;
+  }
+  
+  /** Method to set the green to 0 */
+  public Picture zeroGreen()
+  {
+    Pixel[][] pixels = this.getPixels2D();
+    for (Pixel[] rowArray : pixels)
+    {
+      for (Pixel pixelObj : rowArray)
+      {
+        pixelObj.setGreen(0);
+      }
+    }
+    
+    return this;
   }
   
   /** Method to set the red and green to 0 */
-  public void onlyBlue()
+  public Picture onlyBlue()
   {
     Pixel[][] pixels = this.getPixels2D();
     for (Pixel[] rowArray : pixels)
@@ -111,6 +143,40 @@ public class Picture extends SimplePicture
         pixelObj.setRed(0);
       }
     }
+    
+    return this;
+  }
+  
+  /** Method to set the blueed and green to 0 */
+  public Picture onlyRed()
+  {
+    Pixel[][] pixels = this.getPixels2D();
+    for (Pixel[] rowArray : pixels)
+    {
+      for (Pixel pixelObj : rowArray)
+      {
+        pixelObj.setGreen(0);
+        pixelObj.setBlue(0);
+      }
+    }
+    
+    return this;
+  }
+  
+  /** Method to set the red and blue to 0 */
+  public Picture onlyGreen()
+  {
+    Pixel[][] pixels = this.getPixels2D();
+    for (Pixel[] rowArray : pixels)
+    {
+      for (Pixel pixelObj : rowArray)
+      {
+        pixelObj.setBlue(0);
+        pixelObj.setRed(0);
+      }
+    }
+    
+    return this;
   }
   
   public void negate()
@@ -666,6 +732,20 @@ public class Picture extends SimplePicture
     this.copy(flower2,500,0);
     this.mirrorVertical();
     this.write("collage.jpg");
+  }
+  
+  public void createBetterCollage()
+  {
+      Picture mainPic = new Picture("picture.jpg");
+      
+      this.copy(new Picture(new Picture("picture.jpg").zeroRed(),625,0);
+      this.copy(new Picture("picture.jpg").zeroGreen(),625*2,0);
+      this.copy(new Picture("picture.jpg").zeroBlue(),625*3,0);
+      
+      this.copy(new Picture("picture.jpg").onlyRed(),625,400);
+      this.copy(new Picture("picture.jpg").onlyGreen(),625*2,400);
+      this.copy(new Picture("picture.jpg").onlyBlue(),625*3,400);
+      
   }
   
   

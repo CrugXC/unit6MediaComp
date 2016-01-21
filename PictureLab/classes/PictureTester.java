@@ -11,7 +11,16 @@ public class PictureTester
   /** Method to test zeroBlue */
   public static void testZeroBlue()
   {
-    Picture beach = new Picture("beach.jpg");
+    Picture beach = new Picture("picture.jpg");
+    beach.explore();
+    beach.zeroBlue();
+    beach.explore();
+  }
+  
+  /** Method to test zeroRed */
+  public static void testZeroRed()
+  {
+    Picture beach = new Picture("picture.jpg");
     beach.explore();
     beach.zeroBlue();
     beach.explore();
@@ -20,7 +29,7 @@ public class PictureTester
   /** Method to test onlyBlue */
   public static void testOnlyBlue()
   {
-    Picture beach = new Picture("beach.jpg");
+    Picture beach = new Picture("picture.jpg");
     beach.explore();
     beach.onlyBlue();
     beach.explore();
@@ -29,7 +38,7 @@ public class PictureTester
   /** Method to test negate */
   public static void testNegate()
   {
-    Picture beach = new Picture("beach.jpg");
+    Picture beach = new Picture("picture.jpg");
     beach.explore();
     beach.negate();
     beach.explore();
@@ -38,7 +47,7 @@ public class PictureTester
   /** Method to test grayscale */
   public static void testGrayscale()
   {
-    Picture beach = new Picture("beach.jpg");
+    Picture beach = new Picture("picture.jpg");
     beach.explore();
     beach.grayscale();
     beach.explore();
@@ -56,7 +65,7 @@ public class PictureTester
   /** Method to test mirrorVertical */
   public static void testMirrorVertical()
   {
-    Picture caterpillar = new Picture("caterpillar.jpg");
+    Picture caterpillar = new Picture("picture.jpg");
     caterpillar.explore();
     caterpillar.mirrorVertical();
     caterpillar.explore();
@@ -65,7 +74,7 @@ public class PictureTester
   /** Method to test mirrorVerticalLeftToRight */
   public static void testMirrorVerticalRightToLeft()
   {
-    Picture caterpillar = new Picture("caterpillar.jpg");
+    Picture caterpillar = new Picture("picture.jpg");
     caterpillar.explore();
     caterpillar.mirrorVerticalRightToLeft();
     caterpillar.explore();
@@ -74,7 +83,7 @@ public class PictureTester
   /** Method to test mirrorHorizontal */
   public static void testMirrorHorizontal()
   {
-    Picture caterpillar = new Picture("caterpillar.jpg");
+    Picture caterpillar = new Picture("picture.jpg");
     caterpillar.explore();
     caterpillar.mirrorHorizontal();
     caterpillar.explore();
@@ -83,7 +92,7 @@ public class PictureTester
   /** Method to test mirrorDiagonal */
   public static void testMirrorDiagonal()
   {
-    Picture caterpillar = new Picture("caterpillar.jpg");
+    Picture caterpillar = new Picture("picture.jpg");
     caterpillar.explore();
     caterpillar.mirrorDiagonal();
     caterpillar.explore();
@@ -92,7 +101,7 @@ public class PictureTester
   /** Method to test mirrorTemple */
   public static void testMirrorTemple()
   {
-    Picture temple = new Picture("temple.jpg");
+    Picture temple = new Picture("picture.jpg");
     temple.explore();
     temple.mirrorTemple();
     temple.explore();
@@ -101,7 +110,7 @@ public class PictureTester
   /** Method to test mirrorSnowman */
   public static void testMirrorSnowman()
   {
-    Picture snowman = new Picture("snowman.jpg");
+    Picture snowman = new Picture("picture.jpg");
     snowman.explore();
     snowman.mirrorSnowman();
     snowman.explore();
@@ -110,7 +119,7 @@ public class PictureTester
   /** Method to test mirrorSeagull */
   public static void testMirrorSeagull()
   {
-    Picture seagull = new Picture("seagull.jpg");
+    Picture seagull = new Picture("picture.jpg");
     seagull.explore();
     seagull.mirrorSeagull();
     seagull.explore();
@@ -137,7 +146,7 @@ public class PictureTester
   /** Method to test scale */
   public static void testScale()
   {
-    Picture moon = new Picture("moon-surface.jpg");
+    Picture moon = new Picture("picture.jpg");
     moon.explore();
     Picture newPic = moon.scale(3);
     newPic.explore();
@@ -146,7 +155,7 @@ public class PictureTester
   /** Method to test rainbow */
   public static void testRainbow()
   {
-    Picture newPic = new Picture("moon-surface.jpg");
+    Picture newPic = new Picture("picture.jpg");
     newPic.rainbow();
     newPic.explore();
   }
@@ -154,7 +163,7 @@ public class PictureTester
   /** Method to test testQuestionMark */
   public static void testTestQuestionMark()
   {
-    Picture newPic = new Picture("swan.jpg");
+    Picture newPic = new Picture("picture.jpg");
     newPic.testQuestionMark();
     newPic.explore();
   }
@@ -162,7 +171,7 @@ public class PictureTester
   /** Method to test testQuestionMark2 */
   public static void testTestQuestionMark2()
   {
-    Picture newPic = new Picture("moon-surface.jpg");
+    Picture newPic = new Picture("picture.jpg");
     newPic.testQuestionMark2();
     newPic.explore();
   }
@@ -170,7 +179,7 @@ public class PictureTester
   /** Method to test posterize */
   public static void testPosterize()
   {
-    Picture newPic = new Picture("temple.jpg");
+    Picture newPic = new Picture("picture.jpg");
     newPic.posterize();
     newPic.explore();
   }
@@ -178,7 +187,7 @@ public class PictureTester
   /** Method to test pixelate */
   public static void testPixelate()
   {
-    Picture newPic = new Picture("swan.jpg");
+    Picture newPic = new Picture("picture.jpg");
     newPic.pixelate(20);
     newPic.explore();
   }
@@ -197,6 +206,14 @@ public class PictureTester
   {
     Picture canvas = new Picture("640x480.jpg");
     canvas.createCollage();
+    canvas.explore();
+  }
+  
+  /** Method to test the betterCollage method */
+  public static void testBetterCollage()
+  {
+    Picture canvas = new Picture(1875,800);
+    canvas.createBetterCollage();
     canvas.explore();
   }
   
