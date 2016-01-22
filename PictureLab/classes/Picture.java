@@ -736,15 +736,32 @@ public class Picture extends SimplePicture
   
   public void createBetterCollage()
   {
-      Picture mainPic = new Picture("picture.jpg");
+      Picture onlyBluePic = new Picture("picture.jpg").onlyBlue();
+      Picture onlyRedPic = new Picture("picture.jpg").onlyRed();
+      Picture onlyGreenPic = new Picture("picture.jpg").onlyGreen();
       
-      this.copy(new Picture(new Picture("picture.jpg").zeroRed(),625,0);
-      this.copy(new Picture("picture.jpg").zeroGreen(),625*2,0);
-      this.copy(new Picture("picture.jpg").zeroBlue(),625*3,0);
+      Picture zeroBluePic = new Picture("picture.jpg").zeroBlue();
+      Picture zeroRedPic = new Picture("picture.jpg").zeroRed();
+      Picture zeroGreenPic = new Picture("picture.jpg").zeroGreen();
       
-      this.copy(new Picture("picture.jpg").onlyRed(),625,400);
-      this.copy(new Picture("picture.jpg").onlyGreen(),625*2,400);
-      this.copy(new Picture("picture.jpg").onlyBlue(),625*3,400);
+      Picture posterizedPic = new Picture("picture.jpg");
+      posterizedPic.posterize();
+      Picture negatedPic = new Picture("picture.jpg");
+      negatedPic.negate();
+      Picture posterizedPic2 = new Picture("picture.jpg");
+      posterizedPic2.testQuestionMark();
+      
+      this.copy(onlyBluePic, 0, 0);
+      this.copy(onlyRedPic, 0, 624);
+      this.copy(onlyGreenPic, 0, 1228);
+      
+      this.copy(zeroBluePic, 399, 0);
+      this.copy(zeroRedPic, 399, 624);
+      this.copy(zeroGreenPic, 399,1228);
+      
+      this.copy(posterizedPic, 798, 0);
+      this.copy(negatedPic, 798, 624);
+      this.copy(posterizedPic2, 798,1228);
       
   }
   

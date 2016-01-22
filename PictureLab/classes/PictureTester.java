@@ -212,7 +212,7 @@ public class PictureTester
   /** Method to test the betterCollage method */
   public static void testBetterCollage()
   {
-    Picture canvas = new Picture(1875,800);
+    Picture canvas = new Picture(1197, 1852);
     canvas.createBetterCollage();
     canvas.explore();
   }
