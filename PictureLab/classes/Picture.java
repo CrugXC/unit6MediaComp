@@ -763,6 +763,8 @@ public class Picture extends SimplePicture
       this.copy(negatedPic, 798, 624);
       this.copy(posterizedPic2, 798,1228);
       
+      
+      this.write("Jay's Collage");
   }
   
   
