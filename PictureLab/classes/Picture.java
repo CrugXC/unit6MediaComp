@@ -746,8 +746,8 @@ public class Picture extends SimplePicture
       
       Picture posterizedPic = new Picture("picture.jpg");
       posterizedPic.posterize();
-      Picture negatedPic = new Picture("picture.jpg");
-      negatedPic.negate();
+      Picture rainbowPic = new Picture("picture.jpg");
+      rainbowPic.rainbow();
       Picture posterizedPic2 = new Picture("picture.jpg");
       posterizedPic2.testQuestionMark();
       
@@ -760,7 +760,7 @@ public class Picture extends SimplePicture
       this.copy(zeroGreenPic, 399,1228);
       
       this.copy(posterizedPic, 798, 0);
-      this.copy(negatedPic, 798, 624);
+      this.copy(rainbowPic, 798, 624);
       this.copy(posterizedPic2, 798,1228);
       
       
